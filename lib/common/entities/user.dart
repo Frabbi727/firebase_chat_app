@@ -48,7 +48,7 @@ class UserData {
   }
 }
 
-// 登录返回
+// login return
 class UserLoginResponseEntity {
   String? accessToken;
   String? displayName;
