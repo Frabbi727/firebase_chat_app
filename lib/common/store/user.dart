@@ -7,11 +7,11 @@ import 'package:get/get.dart';
 class UserStore extends GetxController {
   static UserStore get to => Get.find();
 
-  // 是否登录
+  // whether to log in
   final _isLogin = false.obs;
-  // 令牌 token
+  // token token
   String token = '';
-  // 用户 profile
+  // user profile
   final _profile = UserLoginResponseEntity().obs;
 
   bool get isLogin => _isLogin.value;
@@ -29,13 +29,13 @@ class UserStore extends GetxController {
     }
   }
 
-  // 保存 token
+  // save the token
   Future<void> setToken(String value) async {
     await StorageService.to.setString(STORAGE_USER_TOKEN_KEY, value);
     token = value;
   }
 
-  // 获取 profile
+  // get profile
   Future<String> getProfile() async {
     if (token.isEmpty) return "";
     // var result = await UserAPI.profile();
@@ -51,7 +51,7 @@ class UserStore extends GetxController {
     setToken(profile.accessToken!);
   }
 
-  // 注销
+// logout
   Future<void> onLogout() async {
    // if (_isLogin.value) await UserAPI.logout();
     await StorageService.to.remove(STORAGE_USER_TOKEN_KEY);
