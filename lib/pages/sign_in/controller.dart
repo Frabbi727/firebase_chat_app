@@ -22,6 +22,13 @@ class SignInController extends GetxController {
     try {
       var user = await _googleSignIn.signIn();
       if (user != null) {
+        final _gAuthentication = await user.authentication;
+        final _credential = GoogleAuthProvider.credential(
+            idToken: _gAuthentication.idToken,
+            accessToken: _gAuthentication.accessToken);
+
+        await FirebaseAuth.instance.signInWithCredential(_credential);
+
         String displayName = user.displayName ?? user.email;
         String email = user.email;
         String id = user.id;
@@ -67,17 +74,16 @@ class SignInController extends GetxController {
     } catch (e) {
       toastInfo(msg: "Login error ");
       print("Login errro form catch>>>> ????? $e");
-
     }
   }
 
   @override
-  void onReady(){
+  void onReady() {
     super.onReady();
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if(user==null){
+      if (user == null) {
         print("User is currenly log out");
-      }else{
+      } else {
         print("User is logged in");
       }
     });

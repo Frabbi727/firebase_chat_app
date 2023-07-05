@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 
 import '../../pages/welcome/index.dart';
 import '../../pages/sign_in//index.dart';
+import '../../pages/application/index.dart';
+import '../../pages/contact/index.dart';
 import 'routes.dart';
 
 class AppPages {
@@ -19,9 +21,9 @@ class AppPages {
       name: AppRoutes.INITIAL,
       page: () => WelcomePage(),
       binding: WelcomeBinding(),
-      // middlewares: [
-      //   RouteWelcomeMiddleware(priority: 1),
-      // ],
+      middlewares: [
+        RouteWelcomeMiddleware(priority: 1),
+      ],
     ),
 
     GetPage(
@@ -29,20 +31,21 @@ class AppPages {
       page: () => SignInPage(),
       binding: SignInBinding(),
     ),
-/*
+
     // check if needed to login or not
     GetPage(
       name: AppRoutes.Application,
       page: () => ApplicationPage(),
       binding: ApplicationBinding(),
       middlewares: [
-        RouteAuthMiddleware(priority: 1),
+      //  RouteAuthMiddleware(priority: 1),
       ],
     ),
 
 // latest route
      // front page
      GetPage(name: AppRoutes. Contact, page: () => ContactPage(), binding: ContactBinding()),
+    /*
      //information
      GetPage(name: AppRoutes.Message, page: () => MessagePage(), binding: MessageBinding()),
      //mine

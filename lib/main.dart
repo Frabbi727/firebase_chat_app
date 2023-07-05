@@ -33,12 +33,9 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
-        /*home: Center(
-          child: Text(
-        "Project started",
-        style: TextStyle(color: Colors.red, fontSize: 25),
-      )),*/
       );
     });
   }
 }
+
+//1.58.20 min

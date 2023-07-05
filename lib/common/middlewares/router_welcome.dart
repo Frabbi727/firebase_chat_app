@@ -4,9 +4,9 @@ import 'package:firebase_chat/common/store/store.dart';
 
 import 'package:get/get.dart';
 
-/// 第一次欢迎页面
+/// The first welcome page
 class RouteWelcomeMiddleware extends GetMiddleware {
-  // priority 数字小优先级高
+// priority number is small and has high priority
   @override
   int? priority = 0;
 
