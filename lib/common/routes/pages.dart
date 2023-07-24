@@ -7,6 +7,7 @@ import '../../pages/welcome/index.dart';
 import '../../pages/sign_in//index.dart';
 import '../../pages/application/index.dart';
 import '../../pages/contact/index.dart';
+import '../../pages/chat/index.dart';
 import 'routes.dart';
 
 class AppPages {
@@ -41,6 +42,8 @@ class AppPages {
       //  RouteAuthMiddleware(priority: 1),
       ],
     ),
+    //chat details
+    GetPage(name: AppRoutes.Chat, page: () => ChatPage(), binding: ChatBinding()),
 
 // latest route
      // front page
@@ -50,8 +53,7 @@ class AppPages {
      GetPage(name: AppRoutes.Message, page: () => MessagePage(), binding: MessageBinding()),
      //mine
      GetPage(name: AppRoutes.Me, page: () => MePage(), binding: MeBinding()),
-     //chat details
-     GetPage(name: AppRoutes.Chat, page: () => ChatPage(), binding: ChatBinding()),
+
 
     GetPage(name: AppRoutes.Photoimgview, page: () => PhotoImgViewPage(), binding: PhotoImgViewBinding()),*/
   ];
