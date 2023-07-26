@@ -15,7 +15,7 @@ class ChatPage extends GetView<ChatController> {
       backgroundColor: Colors.transparent,
       elevation: 0,
       flexibleSpace: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
             Color.fromARGB(255, 176, 106, 231),
             Color.fromARGB(255, 166, 112, 231),
@@ -47,15 +47,16 @@ class ChatPage extends GetView<ChatController> {
                             fit: BoxFit.cover,
                           )),
                     ),
-                    errorWidget: (context, url, error)=>Image(
+                    errorWidget: (context, url, error) => Image(
                       image: AssetImage("assets/images/feature-1.png"),
-                      
                     ),
                   ),
                 ),
               ),
             ),
-            SizedBox(width: 15.w,),
+            SizedBox(
+              width: 15.w,
+            ),
             Container(
               padding: EdgeInsets.only(top: 0.h, bottom: 0.h, right: 0.w),
               width: 180.w,
@@ -65,13 +66,13 @@ class ChatPage extends GetView<ChatController> {
                     width: 180.w,
                     height: 44.w,
                     child: GestureDetector(
-                      onTap: (){},
+                      onTap: () {},
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            controller.state.to_name.value??"",
+                            controller.state.to_name.value ?? "",
                             overflow: TextOverflow.clip,
                             style: TextStyle(
                               fontFamily: "Avenir",
@@ -96,7 +97,6 @@ class ChatPage extends GetView<ChatController> {
                   ),
                 ],
               ),
-
             ),
           ],
         ),
@@ -108,9 +108,63 @@ class ChatPage extends GetView<ChatController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      body: Center(
-        child: Column(
-          children: [],
+      body: SafeArea(
+        child: ConstrainedBox(
+          constraints: BoxConstraints.expand(),
+          child: Stack(
+            children: [
+              Positioned(
+                bottom: 0.h,
+                height: 50.h,
+                child: Container(
+                  width: 360.w,
+                  height: 50.h,
+                  color: AppColors.primaryBackground,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: 217.w,
+                        height: 50.h,
+                        child: TextField(
+                          keyboardType: TextInputType.multiline,
+                          maxLines: 1,
+                          controller: controller.textController,
+                          autofocus: false,
+                          focusNode: controller.contentNode,
+                          style: TextStyle(color: Colors.black,fontSize: 15.sp),
+                          decoration:
+                              InputDecoration(helperText: "Send message. . .",),
+                        ),
+                      ),
+                      Container(
+                        height: 30.h,
+                        width: 30.w,
+                        margin: EdgeInsets.only(left: 5.w),
+                        child: GestureDetector(
+                          child:  Icon(
+                            Icons.photo_outlined,
+                            size: 35.w,
+                            color: Colors.blue,
+                          ),
+                          onTap: () {},
+                        ),
+                      ),
+                      Container(
+                        width: 65.w,
+                        height: 35.h,
+                        margin: EdgeInsets.only(left: 10.w, top: 5.h),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              controller.sendMessage();
+                            }, child: Text("Send")),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
