@@ -7,7 +7,7 @@ import '../../pages/welcome/index.dart';
 import '../../pages/sign_in//index.dart';
 import '../../pages/application/index.dart';
 import '../../pages/contact/index.dart';
-import '../../pages/chat/index.dart';
+import '../../pages/message/chat/index.dart';
 import 'routes.dart';
 
 class AppPages {

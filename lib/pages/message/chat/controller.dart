@@ -1,6 +1,6 @@
 import 'package:firebase_chat/common/entities/entities.dart';
 import 'package:firebase_chat/common/store/store.dart';
-import 'package:firebase_chat/pages/chat/state.dart';
+import 'package:firebase_chat/pages/message/chat/state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -51,4 +51,6 @@ class ChatController extends GetxController {
       "last_time":Timestamp.now(),
     });
   }
+
+
 }
