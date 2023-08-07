@@ -1,4 +1,5 @@
 import 'package:firebase_chat/common/values/colors.dart';
+import 'package:firebase_chat/pages/message/chat/widgets/chat_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -114,6 +115,7 @@ class ChatPage extends GetView<ChatController> {
           constraints: BoxConstraints.expand(),
           child: Stack(
             children: [
+              ChatList(),
               Positioned(
                 bottom: 0.h,
                 height: 50.h,

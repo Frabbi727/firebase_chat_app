@@ -82,4 +82,11 @@ class ChatController extends GetxController {
     );
 
   }
+
+  @override
+  void dispose() {
+    msgScrolling.dispose();
+    listener.cancel();
+    super.dispose();
+  }
 }
