@@ -49,13 +49,13 @@ dev_dependencies:
   # GetX
   get: ^4.6.1
 
-  # 日期
+  # the date
   intl: ^0.17.0
 
-  # 屏幕适配
+  # screen adaptation
   flutter_screenutil: ^5.3.1
 
-  # 下拉刷新
+  # Refresh
   pull_to_refresh: ^2.0.0
 
   # toast
@@ -69,12 +69,12 @@ dev_dependencies:
   dio_cookie_manager: ^2.0.0
   cookie_jar: ^3.0.1
 
-  # 缓存
+  # cache
   shared_preferences: ^2.0.13
   cached_network_image: ^3.2.0
   flutter_cache_manager: ^3.3.0
 
-  # 加密安全 SHA
+  # Encrypted security SHA
   crypto: ^3.0.1
 
   # webView
@@ -86,27 +86,27 @@ dev_dependencies:
   # share
   share: ^2.0.4
 
-  # 设备信息
+  # Device information
   device_info: ^2.0.3
 
-  # 包信息
+  # information
   package_info: ^2.0.2
 
-  # 路径查询
+  # Path query
   path_provider: ^2.0.9
 
-  # permission 权限
+  # permission Authority
   permission_handler: ^10.2.0
 
-  # 错误收集
+  # Error collection
   sentry: ^6.3.0
 
-  # 通过 scheme 打开APP 获取 参数
+  # Open APP through scheme to get parameters
   uni_links: ^0.5.1
 
-  #动画库
+  # Animation library
   flutter_spinkit: ^5.1.0
-  # 轮播图
+  # Carousel
   flutter_swiper: ^1.1.6
 
   dots_indicator: ^2.1.0

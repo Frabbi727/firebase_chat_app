@@ -1,9 +1,16 @@
+import 'dart:io';
+
 import 'package:firebase_chat/common/entities/entities.dart';
 import 'package:firebase_chat/common/store/store.dart';
+import 'package:firebase_chat/common/utils/security.dart';
 import 'package:firebase_chat/pages/message/chat/state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:synchronized/extension.dart';
+import 'package:path/path.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 
 class ChatController extends GetxController {
@@ -18,6 +25,51 @@ class ChatController extends GetxController {
   final user_id = UserStore.to.token;
   final db = FirebaseFirestore.instance;
   var listener;
+
+  File? _photo;
+  final ImagePicker _picker = ImagePicker();
+
+  Future imgFromGallery() async {
+    final pickedFile = await _picker.pickImage(source:  ImageSource.gallery);
+    if(pickedFile!=null){
+      _photo= File(pickedFile.path);
+      print("Photo path>>>>>> $_photo");
+      uploadFile();
+    }else{
+      print("No image selected");
+    }
+  }
+
+  Future getImgUrl(String? name)async{
+    final spaceRef= FirebaseStorage.instance.ref("chat").child(name??"");
+   var str= await spaceRef.getDownloadURL();
+   return str??"";
+
+  }
+
+  Future uploadFile()async{
+    if(_photo==null) return;
+    final fileName= getRandomString(15)+extension(_photo!.path);
+    try{
+      final ref= FirebaseStorage.instance.ref("chat").child(fileName);
+      await ref.putFile(_photo!).snapshotEvents.listen((event) async {
+        switch(event.state){
+          case TaskState.running:
+            break;
+          case TaskState.paused:
+            break;
+          case TaskState.success:
+            String imgUrl = await getImgUrl(fileName);
+        }
+
+      });
+
+    }catch(e){
+      print("There's an error $e");
+    }
+
+
+  }
 
   @override
   void onInit() {
